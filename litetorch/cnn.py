@@ -8,6 +8,22 @@ from typing import Callable
 from litetorch.utils import conv2d_output_size, conv2d_output_shape
 
 class CNN(nn.Module):
+    """
+    Create a PyTorch CNN module.
+
+    :param kernel_size: Convolutional kernel size
+    :param stride: convolutional kernel stride
+    :param outpu_size: size of network output
+    :param input_channels: number of channels in the input
+    :param output_activation: if any, activation to apply to the output layer
+    :param input_height: size of one side of input (currently assumes square input)
+    :param channels: List of channel sizes for each convolutional layer
+    :param linear_layer_sizes: list of (if any) sizes of linear layers to add after convolutional layers
+    :param activation: activation function
+    :param dropout_layers: if any, layers to apply dropout to
+    :param dropout_p: probability of dropout to use
+    :param out_squeeze: whether to squeeze the output
+    """
     def __init__(self, 
                 kernel_size: int,
                 stride: int,
@@ -21,7 +37,7 @@ class CNN(nn.Module):
                 dropout_layers: list = None,
                 dropout_p: float = None,
                 out_squeeze: bool = False):
-
+        
         super(CNN, self).__init__()
 
         conv_sizes = [input_channels] + channels

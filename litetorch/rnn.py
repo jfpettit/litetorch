@@ -6,6 +6,22 @@ import numpy as np
 from typing import Callable
 
 class RNN(nn.Module):
+    """
+    Create a PyTorch RNN module.
+
+    :param hidden_size: RNN hidden size
+    :param embed_size: size of embedded input
+    :param vocab_size: how many words in the vocab
+    :param embed: whether to apply embedding layer to the input
+    :num_rnn_layers: How many reccurent layers
+    :param output_size: size of output 
+    :param linear_layer_sizes: list of (if any) sizes of hidden linear layers
+    :param activation: activation function
+    :param output_activation: if any, activation to apply to the output layer
+    :param dropout_layers: if any, layers to apply dropout to
+    :param dropout_p: probability of dropout to use
+    :param out_squeeze: whether to squeeze the output
+    """
     def __init__(self, 
                 hidden_size: int, 
                 embed_size: int,

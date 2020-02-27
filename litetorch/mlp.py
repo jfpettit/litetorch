@@ -7,6 +7,18 @@ from typing import Callable
 
 
 class MLP(nn.Module):
+    """
+    Create a PyTorch MLP module.
+
+    :param input_size: size of input to the MLP
+    :param output_size: size of output from the MLP
+    :param hidden_layer_sizes: list of (if any) sizes of hidden linear layers
+    :param activation: activation function
+    :param output_activation: if any, activation to apply to the output layer
+    :param dropout_layers: if any, layers to apply dropout to
+    :param dropout_p: probability of dropout to use
+    :param out_squeeze: whether to squeeze the output
+    """
     def __init__(self,
                 input_size: int,
                 output_size: int,
@@ -16,6 +28,7 @@ class MLP(nn.Module):
                 dropout_layers: list = None,
                 dropout_p: float = None,
                 out_squeeze: bool = False):
+        
         super(MLP, self).__init__()
         layer_sizes = [input_size] + hidden_layer_sizes + [output_size] 
         self.layers = nn.ModuleList()
