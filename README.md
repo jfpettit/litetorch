@@ -18,7 +18,7 @@ You should be able to import it into Python now!
 
 ## Usage
 
-Import it and use it as a general library:
+Import it and use it as a standard library:
 
 ```python
 import litetorch as lt
