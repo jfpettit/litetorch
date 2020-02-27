@@ -8,11 +8,11 @@ To help battle this in my own work, I've written a small set of model classes an
 
 Clone this repository, cd into it, and pip install:
 
-'''
+```
 git clone https://github.com/jfpettit/litetorch.git
 cd litetorch
 pip install -e .
-'''
+```
 
 You should be able to import it into Python now!
 
