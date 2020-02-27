@@ -7,7 +7,8 @@ from typing import Callable
 
 class ModelChain(nn.Module):
     def __init__(self, model_list, output_squeeze=False):
-        self.model_list = model_list
+        super(ModelChain, self).__init__()
+        self.model_list = nn.ModuleList(model_list)
         self.output_squeeze = output_squeeze
 
     def forward(self, x):

@@ -10,6 +10,6 @@ setup(
 	author_email='jfpettit@gmail.com',
     short_description='Lightweight model classes on top of PyTorch to reduce rewriting of common models.',
     long_description=long_description,
-	install_requires=['numpy', 'torch', 'scipy', 'torchtext', 'termcolor', 'joblib', 'typing', 'spacy']
-	,
+	tests_require = ['torchtext', 'spacy'],
+	install_requires=['numpy', 'torch', 'typing'],
 )
