@@ -5,7 +5,7 @@ import numpy as np
 
 from typing import Callable
 
-from litetorch import RNN
+from litetorch import GRU
 
 import time
 import random
@@ -45,7 +45,7 @@ vocab_size = len(TEXT.vocab)
 hidden_dim = 256
 embedding_dim = 100
 
-model = RNN(hidden_dim, embedding_dim, vocab_size, embed=True, output_size=1, linear_layer_sizes=[25, 12])
+model = GRU(hidden_dim, embedding_dim, vocab_size, embed=True, output_size=1, linear_layer_sizes=[25, 12])
 
 import torch.optim as optim
 
@@ -79,7 +79,6 @@ def train(model, iterator, optimizer, criterion):
         optimizer.zero_grad()
                 
         predictions = model(batch.text)[1].squeeze(1)
-        print(predictions.shape)
         
         loss = criterion(predictions, batch.label)
         
@@ -105,7 +104,7 @@ def evaluate(model, iterator, criterion):
     
         for batch in iterator:
 
-            predictions = model(batch.text).squeeze(1)
+            predictions = model(batch.text)[1].squeeze(1)
             
             loss = criterion(predictions, batch.label)
             

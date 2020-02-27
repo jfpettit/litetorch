@@ -47,7 +47,7 @@ class RNN(nn.Module):
     def forward(self, x, hid=None):
         if self.embed:
             x = self.embedding(x)
-        x, hid = self.rnn(x, hid)
+        x, hid = self.rnn(x, hid) if hid is not None else self.rnn(x)
         
         if self.linear_layers is not None:
             hid = hid.squeeze(0)
@@ -65,4 +65,7 @@ class RNN(nn.Module):
             else:
                 hid = self.output_activation(self.linear_layers[-1](hid))
 
-        return x.squeeze(), hid if self.out_squeeze else x, hid
+        if self.out_squeeze:
+            return x.squeeze(), hid 
+        else:
+            return x, hid
